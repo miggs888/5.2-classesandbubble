@@ -1,26 +1,27 @@
-let bubble1;
-let bubble2;
-
-
 function setup() {
     createCanvas(600, 400);
-    bubble1 = new Bubble();
-    bubble2 = new Bubble();
-
+    bubble = new Bubble();
 }
+
 function draw() {
     background(0);
-    bubble1.move();
-    bubble1.show();
-    bubble2.move();
-    bubble2.show();
-    
+    for (let i = 0; i < 25; i++) {
+        bubble.move();
+        bubble.show();
+        bubble.fill();
+    }
 }
 
 class Bubble {
     constructor() {
-        this.x = 200; 
-        this.y = 150;
+        this.x = 300; 
+        this.y = 200;
+        this.r = random(10, 200);
+        this.h = random(10, 200);
+        this.f = random(1, 255);
+    }
+    fill() {
+        this.f;
     }
     move() {
         this.x = this.x + random(-5, 5);
@@ -29,7 +30,7 @@ class Bubble {
     show() {
         stroke(255);
         strokeWeight(4);
-        noFill();
-        ellipse(this.x, this.y, 24, 24);
+        fill(this.f);
+        ellipse(this.x, this.y, this.r, this.h);
     }
 }
